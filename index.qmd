@@ -1,16 +1,19 @@
 ---
-title: My First Closeread
+title: NSW Public Health Under Pressure as Demand reaches Record Levels
 format: closeread-html
 ---
 
-Hello World! Please read my Closeread story below.
+The Bureau of Health Information reports demand on the NSW health system. 
 
 :::: cr-section
-Closeread enables scrollytelling.
+Health Minister Ryan Park blames Bed Block for the pressure.
 
-Draw your readers attention with focus effects. @cr-features
+In the last 3 months @cr-features
 
-Some other line of text with a trigger! @cr-plot
+408,518 ambulance calls @cr-plot1
+300,367 ambulance incidents @cr-plot2
+820,009 emergency department attendances @cr-plot3
+
 
 ::: {#cr-features}
 1.  Highlighting
@@ -20,9 +23,71 @@ Some other line of text with a trigger! @cr-plot
 
 ::: {#cr-plot}
 ```{r}
-plot(cars)
+#| warning: false
+#| message: false
 
+#load package
+library(tidyverse)
+
+ambulance <- tribble(
+  ~Year, ~Calls, ~Responses, ~Incidents, ~Patient_transports,
+  2020, 333, 320, 250, 192,
+  2021, 345, 321, 252, 187,
+  2022, 360, 348, 270, 195,
+  2023, 360, 378, 285, 204,
+  2024, 380, 390, 292, 208,
+  2025, 409, 392, 300, 214
+)
+
+ambulance_long <- pivot_longer(
+  ambulance,
+  -Year,
+  names_to = "Measure",
+  values_to = "Value"
+)
+
+highlight_plot <- function(highlight){
+
+ggplot(ambulance_long,
+       aes(Year, Value,
+           group = Measure,
+           colour = Measure == highlight)) +
+
+  geom_line(linewidth = 1.3) +
+
+  scale_colour_manual(values = c("grey80", "#0072B2"), guide = "none") +
+
+  labs(
+    title = highlight,
+    x = NULL,
+    y = "Thousands"
+  ) +
+
+  theme_minimal(base_size = 14)
+}
 ```
 :::
 
+:::{#cr-plot1}
+
+```{r}
+highlight_plot("Calls")
+```
+
+
+:::
+
+:::{#cr-plot2}
+
+```{r}
+highlight_plot("Responses")
+```
+:::
+
+:::{#cr-plot3}
+
+```{r}
+highlight_plot("Incidents")
+
+```
 ::::
