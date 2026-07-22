@@ -5,18 +5,24 @@ format: closeread-html
 
 Hello World! Please read my Closeread story below.
 
-::::{.cr-section}
+:::: cr-section
 Closeread enables scrollytelling.
 
 Draw your readers attention with focus effects. @cr-features
 
 Some other line of text with a trigger! @cr-plot
 
-
 ::: {#cr-features}
 1.  Highlighting
 2.  Zooming
 3.  Panning
+:::
+
+::: {#cr-plot}
+```{r}
+plot(cars)
+
+```
 :::
 
 ::::
