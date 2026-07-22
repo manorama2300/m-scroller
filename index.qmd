@@ -56,14 +56,14 @@ ggplot(ambulance_long,
 
   geom_line(linewidth = 1.3) +
   scale_colour_manual(values = c("grey80", "#0072B2"), guide = "none") +
-  theme_minimal(base_size = 14)
+  theme_minimal(base_size = 14)}
   
-  highlight_plot("Calls")
+highlight_plot("Calls")
   
-  highlight_plot("Incidents")
+highlight_plot("Incidents")
   
-  highlight_plot("Responses")
-}
+highlight_plot("Responses")
+
 ```
 :::
 
