@@ -10,9 +10,9 @@ Health Minister Ryan Park blames Bed Block for the pressure.
 
 In the last 3 months @cr-features
 
-408,518 ambulance calls @cr-plot1
-300,367 ambulance incidents @cr-plot2
-820,009 emergency department attendances @cr-plot3
+408,518 ambulance calls @cr-plotCalls
+300,367 ambulance incidents @cr-plotIncidents
+820,009 emergency department attendances @cr-plotResponses
 
 
 ::: {#cr-features}
@@ -68,7 +68,7 @@ ggplot(ambulance_long,
 ```
 :::
 
-:::{#cr-plot1}
+:::{#cr-plotCalls}
 
 ```{r}
 highlight_plot("Calls")
@@ -77,17 +77,19 @@ highlight_plot("Calls")
 
 :::
 
-:::{#cr-plot2}
+:::{#cr-plotResponses}
 
 ```{r}
 highlight_plot("Responses")
 ```
 :::
 
-:::{#cr-plot3}
+:::{#cr-plotIncidents}
 
 ```{r}
 highlight_plot("Incidents")
 
 ```
+:::
+
 ::::
